@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola Nova | Sistema Escolar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo-frame">
+        <img class="brand-logo" src="assets/escola-nova-logo.png" alt="Escola Nova — Curso Técnico">
+      </div>
+    </div>
+
+    <p class="menu-label">MENU PRINCIPAL</p>
+
+    <button class="nav-item active" data-page="inicio">🏠 Início</button>
+    <button class="nav-item" data-page="alunos">👨‍🎓 Alunos</button>
+    <button class="nav-item" data-page="professores">👩‍🏫 Professores</button>
+    <button class="nav-item" data-page="turmas">📚 Turmas</button>
+    <button class="nav-item" data-page="matriculas">📝 Matrículas</button>
+
+    <div class="sidebar-footer">
+      <span class="status-dot"></span>
+      Projeto de demonstração
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PAINEL DE CONTROLE</p>
+        <h1 id="page-title">Visão geral</h1>
+      </div>
+      <div class="profile">
+        <div class="avatar">EN</div>
+        <div>
+          <strong>Administrador</strong>
+          <small>Escola Nova</small>
+        </div>
+      </div>
+    </header>
+
+    <section id="inicio" class="page active">
+      <div class="welcome">
+        <div>
+          <span class="welcome-tag">BEM-VINDO(A)!</span>
+          <h2>Olá! Este é o painel da Escola Nova.</h2>
+          <p>Gerencie os registros escolares em um só lugar.</p>
+        </div>
+        <div class="welcome-icon">🎓</div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card purple-card">
+          <div class="stat-top"><span>Alunos cadastrados</span><span>👨‍🎓</span></div>
+          <strong id="total-alunos">0</strong>
+          <small>Registros no sistema</small>
+        </article>
+
+        <article class="stat-card yellow-card">
+          <div class="stat-top"><span>Professores</span><span>👩‍🏫</span></div>
+          <strong id="total-professores">0</strong>
+          <small>Profissionais cadastrados</small>
+        </article>
+
+        <article class="stat-card white-card">
+          <div class="stat-top"><span>Turmas</span><span>📚</span></div>
+          <strong id="total-turmas">0</strong>
+          <small>Turmas registradas</small>
+        </article>
+
+        <article class="stat-card white-card">
+          <div class="stat-top"><span>Matrículas</span><span>📝</span></div>
+          <strong id="total-matriculas">0</strong>
+          <small>Matrículas registradas</small>
+        </article>
+      </div>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Últimos alunos cadastrados</h3>
+            <p>Consulte os registros mais recentes.</p>
+          </div>
+          <button class="btn btn-primary" data-go="alunos">Ver alunos →</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nome</th><th>E-mail</th><th>Turma</th><th>Status</th></tr>
+            </thead>
+            <tbody id="recent-students"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="alunos" class="page">
+      <div class="page-intro">
+        <h2>Cadastro de alunos</h2>
+        <p>Adicione e consulte os alunos da escola.</p>
+      </div>
+
+      <section class="panel">
+        <h3>Novo aluno</h3>
+        <form id="form-alunos" class="form-grid">
+          <label>Nome completo
+            <input name="nome" required placeholder="Nome do aluno">
+          </label>
+          <label>E-mail
+            <input name="email" type="email" required placeholder="aluno@email.com">
+          </label>
+          <label>Turma
+            <input name="turma" required placeholder="Ex.: 9º ano A">
+          </label>
+          <label>Status
+            <select name="status">
+              <option>Ativo</option>
+              <option>Pendente</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">+ Cadastrar aluno</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div><h3>Lista de alunos</h3><p>Todos os alunos cadastrados.</p></div>
+          <input class="table-search" data-search="alunos" placeholder="Buscar aluno...">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Turma</th><th>Status</th><th>Ação</th></tr></thead>
+            <tbody id="table-alunos"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="professores" class="page">
+      <div class="page-intro">
+        <h2>Cadastro de professores</h2>
+        <p>Gerencie os profissionais da escola.</p>
+      </div>
+
+      <section class="panel">
+        <h3>Novo professor</h3>
+        <form id="form-professores" class="form-grid">
+          <label>Nome completo
+            <input name="nome" required placeholder="Nome do professor">
+          </label>
+          <label>E-mail
+            <input name="email" type="email" required placeholder="professor@email.com">
+          </label>
+          <label>Disciplina
+            <input name="disciplina" required placeholder="Ex.: Matemática">
+          </label>
+          <label>Telefone
+            <input name="telefone" placeholder="(00) 00000-0000">
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">+ Cadastrar professor</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div><h3>Lista de professores</h3><p>Profissionais cadastrados.</p></div>
+          <input class="table-search" data-search="professores" placeholder="Buscar professor...">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Disciplina</th><th>Telefone</th><th>Ação</th></tr></thead>
+            <tbody id="table-professores"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="turmas" class="page">
+      <div class="page-intro">
+        <h2>Cadastro de turmas</h2>
+        <p>Organize as turmas e os horários escolares.</p>
+      </div>
+
+      <section class="panel">
+        <h3>Nova turma</h3>
+        <form id="form-turmas" class="form-grid">
+          <label>Nome da turma
+            <input name="nome" required placeholder="Ex.: 9º ano A">
+          </label>
+          <label>Série
+            <input name="serie" required placeholder="Ex.: 9º ano">
+          </label>
+          <label>Turno
+            <select name="turno">
+              <option>Manhã</option>
+              <option>Tarde</option>
+              <option>Noite</option>
+            </select>
+          </label>
+          <label>Quantidade de vagas
+            <input name="vagas" type="number" min="1" required placeholder="Ex.: 30">
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">+ Cadastrar turma</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div><h3>Lista de turmas</h3><p>Turmas cadastradas.</p></div>
+          <input class="table-search" data-search="turmas" placeholder="Buscar turma...">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Turma</th><th>Série</th><th>Turno</th><th>Vagas</th><th>Ação</th></tr></thead>
+            <tbody id="table-turmas"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="matriculas" class="page">
+      <div class="page-intro">
+        <h2>Cadastro de matrículas</h2>
+        <p>Registre o vínculo de um aluno com uma turma.</p>
+      </div>
+
+      <section class="panel">
+        <h3>Nova matrícula</h3>
+        <form id="form-matriculas" class="form-grid">
+          <label>Nome do aluno
+            <input name="aluno" required placeholder="Nome do aluno">
+          </label>
+          <label>Turma
+            <input name="turma" required placeholder="Ex.: 9º ano A">
+          </label>
+          <label>Data da matrícula
+            <input name="data" type="date" required>
+          </label>
+          <label>Situação
+            <select name="status">
+              <option>Ativa</option>
+              <option>Pendente</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">+ Registrar matrícula</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div><h3>Lista de matrículas</h3><p>Matrículas registradas no sistema.</p></div>
+          <input class="table-search" data-search="matriculas" placeholder="Buscar matrícula...">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Aluno</th><th>Turma</th><th>Data</th><th>Status</th><th>Ação</th></tr></thead>
+            <tbody id="table-matriculas"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">Escola Nova · Projeto escolar de demonstração</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
